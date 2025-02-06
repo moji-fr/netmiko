@@ -9,11 +9,9 @@ class TheBastionSSH(LinuxSSH):
         """Handle The Bastion's specific welcome message and prompt."""
         self.ansi_escape_codes = True
         
-        # Wait for the initial login banner and welcome message
         self._test_channel_read(pattern=r"Loading\.\.\. \d+ commands and \d+ autocompletion rules loaded\.")
         
-        # Set up the prompt pattern for The Bastion
-        self.prompt_pattern = r"[^@]+@[^>]+\(master\)> "
+        self.prompt_pattern = r"\)> "
         self.set_base_prompt()
 
     def set_base_prompt(
